@@ -8,8 +8,8 @@
 ## Integrantes
 
     David Jose Espinoza Soto - 2016012024
-    Esteban Guzmán Ramírez  - 2015095861
-    Johnny Díaz
+    Esteban Guzmán Ramírez   - 2015095861
+    Johnny Díaz Coto         - 2020042119
     Jurgenn
 
 ## Objetivo General
