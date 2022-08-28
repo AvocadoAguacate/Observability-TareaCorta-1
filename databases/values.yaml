@@ -3,36 +3,36 @@
 #Para MariaDB
 mariadb:
   metrics:
-    enable: false
+    enabled: false
     serviceMonitor:
-      enable: true
+      enabled: true
 #Para Elasticsearch
 eck-operator:
   metrics:
-    enable: false
+    enabled: false
     serviceMonitor:
-      enable: true
+      enabled: true
 #Para PostgreSql
 postgresql:
   metrics:
-    enable: false
+    enabled: false
     serviceMonitor:
-      enable: true
+      enabled: true
 #Para MongoDB
 mongodb:
   metrics:
-    enable: false
+    enabled: false
     serviceMonitor:
-      enable: true
+      enabled: true
 #Para Prometheus
 kube-prometheus:
   metrics:
-    enable: false
+    enabled: false
     serviceMonitor:
-      enable: true
+      enabled: true
 #Para Grafana
 grafana:
   metrics:
-    enable: false
+    enabled: false
     serviceMonitor:
-      enable: true
+      enabled: true
