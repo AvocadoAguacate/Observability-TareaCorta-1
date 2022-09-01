@@ -88,3 +88,9 @@ enabledPrometheus: false
 enabledGrafana: false
 enabledECKOperator: false
 enabledMariaDB: false
+
+mongodb:
+  architecture: replicaset
+  replicaSetConfigurationSettings:
+    enabled: true
+  replicaCount: 3
