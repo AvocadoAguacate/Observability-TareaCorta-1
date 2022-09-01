@@ -82,9 +82,9 @@ tolerations: []
 affinity: {}
 
 
-enableMariaDB: true 
-enablePrometheus: true 
-enableGrafana: true 
-enableECKOperator: true 
-#enableElasticsearch: false
-
+enabledPostgreSQL: false
+enabledMongoDB: true
+enabledPrometheus: false
+enabledGrafana: false
+enabledECKOperator: false
+enabledMariaDB: false
