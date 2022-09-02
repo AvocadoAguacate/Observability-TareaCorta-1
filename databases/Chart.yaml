@@ -28,17 +28,17 @@ dependencies:
   - name: eck-operator
     version: "2.3.0"
     repository: https://helm.elastic.co
-    condition: enableECKOperator
+    condition: enabledECKOperator
   
   - name: mariadb
     version: "11.1.8"
     repository: https://charts.bitnami.com/bitnami
-    condition: enableMariaDB
+    condition: enabledMariaDB
   
   - name: postgresql
     repository: https://charts.bitnami.com/bitnami
     version: "11.8.1"
-    condition: postgreSQL
+    condition: enabledPostgreSQL
 
   - name: mongodb
     version: "13.1.2"

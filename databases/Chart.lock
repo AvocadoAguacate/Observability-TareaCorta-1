@@ -17,5 +17,5 @@ dependencies:
 - name: grafana
   repository: https://charts.bitnami.com/bitnami
   version: 8.2.2
-digest: sha256:bbcd080c56bc15665519a4e99aad486316fe79675aa4088417a8db987756d55e
-generated: "2022-08-27T14:50:52.415682-06:00"
+digest: sha256:6a140ce1c6a714a0a27704161d3118c2b689739839b2e169df92cd7879b51c17
+generated: "2022-08-31T19:08:57.9171088-06:00"
