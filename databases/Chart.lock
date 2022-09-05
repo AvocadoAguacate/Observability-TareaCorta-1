@@ -5,9 +5,6 @@ dependencies:
 - name: mariadb
   repository: https://charts.bitnami.com/bitnami
   version: 11.1.8
-- name: postgresql
-  repository: https://charts.bitnami.com/bitnami
-  version: 11.8.1
 - name: mongodb
   repository: https://charts.bitnami.com/bitnami
   version: 13.1.2
@@ -17,5 +14,5 @@ dependencies:
 - name: grafana
   repository: https://charts.bitnami.com/bitnami
   version: 8.2.2
-digest: sha256:bbcd080c56bc15665519a4e99aad486316fe79675aa4088417a8db987756d55e
-generated: "2022-08-27T14:50:52.415682-06:00"
+digest: sha256:01057024fb29734a9d6e93e0188dcc1407335e00b93f1eb7059e8d58a31d4ae9
+generated: "2022-09-04T23:33:43.9606385-06:00"

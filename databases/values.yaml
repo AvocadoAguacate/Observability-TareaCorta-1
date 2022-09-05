@@ -82,15 +82,20 @@ tolerations: []
 affinity: {}
 
 
-enabledPostgreSQL: false
-enabledMongoDB: true
-enabledPrometheus: false
-enabledGrafana: false
-enabledECKOperator: false
-enabledMariaDB: false
+enablePostgreSQL: false
+enableMongoDB: true
+enablePrometheus: false
+enableGrafana: false
+enableECKOperator: false
+enableMariaDB: false
 
 mongodb:
   architecture: replicaset
-  replicaSetConfigurationSettings:
-    enabled: true
   replicaCount: 3
+  readinessProbe:
+    enabled: true
+    initialDelaySeconds: 5
+    periodSeconds: 10
+    timeoutSeconds: 5
+    failureThreshold: 6
+    successThreshold: 1
