@@ -1,4 +1,4 @@
-# Default values for databases.
+# Default values for monitoring.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
@@ -81,13 +81,17 @@ tolerations: []
 
 affinity: {}
 
-#Habilitando dependencias
-#jerarquia de instalacion
-enabledECKOperator: true
+enabledPrometheus: true
+enabledGrafana: true
 
-#Aqui se sobre escribe los valores que por defecto llevan.
-#Para Elasticsearch
-eck-operator:
+#Para Prometheus
+kube-prometheus:
+  metrics:
+    enabled: true
+    serviceMonitor:
+      enabled: true
+#Para Grafana
+grafana:
   metrics:
     enabled: true
     serviceMonitor:
