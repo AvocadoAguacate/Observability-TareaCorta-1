@@ -25,6 +25,8 @@ appVersion: "1.16.0"
 
 dependencies:
   - name: eck-operator
-    version: "2.3.0"
+    version: "2.4.0"
     repository: https://helm.elastic.co
     condition: enabledECKOperator
+    config:
+      node.store.allow_mmap: false

@@ -81,18 +81,5 @@ tolerations: []
 
 affinity: {}
 
-enabledPrometheus: true
+enabledPrometheusCommunity: true
 enabledGrafana: true
-
-#Para Prometheus
-kube-prometheus:
-  metrics:
-    enabled: true
-    serviceMonitor:
-      enabled: true
-#Para Grafana
-grafana:
-  metrics:
-    enabled: true
-    serviceMonitor:
-      enabled: true
