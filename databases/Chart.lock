@@ -11,11 +11,8 @@ dependencies:
 - name: mongodb
   repository: https://charts.bitnami.com/bitnami
   version: 13.1.2
-- name: kube-prometheus
-  repository: https://charts.bitnami.com/bitnami
-  version: 8.0.16
-- name: grafana
-  repository: https://charts.bitnami.com/bitnami
-  version: 8.2.2
-digest: sha256:627db0839ff27ad39bf0daabd19ef005d11cc6219e2eb2a3c801b40db6ad9789
-generated: "2022-08-30T14:41:57.508284-06:00"
+- name: pgadmin4
+  repository: https://helm.runix.net
+  version: 1.12.0
+digest: sha256:b8ceeba0723d436bd13f97797cf864a91056e649ad94e3d6ae1e9d3a915d3af8
+generated: "2022-09-08T12:00:57.0996168-06:00"
