@@ -21,21 +21,22 @@ version: 0.1.0
 # incremented each time you make changes to the application. Versions are not expected to
 # follow Semantic Versioning. They should reflect the version the application is using.
 # It is recommended to use it with quotes.
+
+#viejo enlace https://prometheus-community.github.io/helm-charts
 appVersion: "1.16.0"
 
 dependencies:
-  - name: prometheus-community
-    version: "1.4.2"
-    repository: https://prometheus-community.github.io/helm-charts
-    condition: enabledPrometheusCommunity
-  
-  - elasticsearch_exporter:
-    image: quay.io/prometheuscommunity/elasticsearch-exporter:latest
-    command: '--es.uri=http://elasticsearch:9200'
-    restart: always
-    ports: "127.0.0.1:9114:9114"
+  - name: kube-prometheus
+    version: "8.0.16"
+    repository: https://charts.bitnami.com/bitnami
+    condition: enablePrometheus
 
   - name: grafana
-    version: "8.2.3"
+    version: "8.2.2"
     repository: https://charts.bitnami.com/bitnami
-    condition: enabledGrafana
+    condition: enableGrafana
+  
+  - name: prometheus-elasticsearch-exporter
+    version: "4.14.0"
+    repository: https://prometheus-community.github.io/helm-charts
+    condition: enablePrometheusCommunity

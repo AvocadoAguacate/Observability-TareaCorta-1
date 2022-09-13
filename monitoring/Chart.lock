@@ -1,0 +1,12 @@
+dependencies:
+- name: kube-prometheus
+  repository: https://charts.bitnami.com/bitnami
+  version: 8.0.16
+- name: grafana
+  repository: https://charts.bitnami.com/bitnami
+  version: 8.2.2
+- name: prometheus-elasticsearch-exporter
+  repository: https://prometheus-community.github.io/helm-charts
+  version: 4.14.0
+digest: sha256:34d01bd7915f6bd6bb7922055f89475f4c529ba035c065af3bd09c85ebb42280
+generated: "2022-09-12T19:40:52.5669429-06:00"

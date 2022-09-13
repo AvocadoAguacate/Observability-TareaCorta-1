@@ -81,5 +81,6 @@ tolerations: []
 
 affinity: {}
 
-enabledPrometheusCommunity: true
-enabledGrafana: true
+enablePrometheus: true
+enableGrafana: true
+enablePrometheusCommunity: true

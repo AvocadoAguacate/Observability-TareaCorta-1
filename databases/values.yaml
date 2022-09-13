@@ -87,8 +87,54 @@ enabledECKOperator: true
 
 #Aqui se sobre escribe los valores que por defecto llevan.
 #Para Elasticsearch
-eck-operator:
-  metrics:
+#eck-operator:
+#  metrics:
+#    enabled: true
+#    serviceMonitor:
+#      enabled: true
+
+###################### Agent Configuration Example #########################
+
+outputs: #parametros de entrada
+  default:
+    type: elasticsearch
+    hosts: [127.0.0.1:9200]
+    api-key: "example-key"
+    username: "root"
+    password: "rootroot"
+
+inputs: #metricas para monitorear
+  - type: system/metrics
+    data_stream.namespace: default
+    use_output: default
+    streams:
+    - metricset: cpu
+      data_stream.dataset: system.cpu
+    - metricset: memory
+      data_stream.dataset: system.memory
+    - metricset: network
+      data_stream.dataset: system.network
+    - metricset: filesystem
+      data_stream.dataset: system.filesystem
+
+agent.monitoring:
+  # enabled turns on monitoring of running processes
+  enabled: true
+  # enables log monitoring
+  logs: true
+  # enables metrics monitoring
+  metrics: true
+  # exposes /debug/pprof/ endpoints
+  # recommended that these endpoints are only enabled if the monitoring endpoint is set to localhost
+  pprof.enabled: true
+  # exposes agent metrics using http, by default sockets and named pipes are used
+  http:
+    # enables http endpoint
     enabled: true
-    serviceMonitor:
-      enabled: true
+    # The HTTP endpoint will bind to this hostname, IP address, unix socket or named pipe.
+    # When using IP addresses, it is recommended to only use localhost.
+    host: localhost
+    # Port on which the HTTP endpoint will bind. Default is 0 meaning feature is disabled.
+    port: 6791
+    # Metrics buffer endpoint
+    buffer.enabled: true
