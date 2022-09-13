@@ -1,21 +1,6 @@
 dependencies:
-- name: eck-operator
-  repository: https://helm.elastic.co
-  version: 2.3.0
 - name: mariadb
   repository: https://charts.bitnami.com/bitnami
-  version: 11.1.8
-- name: postgresql
-  repository: https://charts.bitnami.com/bitnami
-  version: 11.8.1
-- name: mongodb
-  repository: https://charts.bitnami.com/bitnami
-  version: 13.1.2
-- name: kube-prometheus
-  repository: https://charts.bitnami.com/bitnami
-  version: 8.0.16
-- name: grafana
-  repository: https://charts.bitnami.com/bitnami
-  version: 8.2.2
-digest: sha256:bbcd080c56bc15665519a4e99aad486316fe79675aa4088417a8db987756d55e
-generated: "2022-08-27T14:50:52.415682-06:00"
+  version: 11.3.0
+digest: sha256:952881b51b546537fe5592c2c5d7b247f1151a59a399afa5066a216ab6d699ab
+generated: "2022-09-12T19:39:57.8897531-06:00"

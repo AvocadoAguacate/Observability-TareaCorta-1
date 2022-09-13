@@ -10,7 +10,7 @@
     David Jose Espinoza Soto - 2016012024
     Esteban Guzmán Ramírez   - 2015095861
     Johnny Díaz Coto         - 2020042119
-    Jurgenn
+    Jurgenn Morales Jiménez  - 2016145484
 
 ## Objetivo General
 
