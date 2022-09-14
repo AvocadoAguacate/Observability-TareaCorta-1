@@ -92,6 +92,8 @@ enableMariaDB: false
 mongodb:
   architecture: replicaset
   replicaCount: 3
+  auth:
+    enabled: false
   readinessProbe:
     enabled: true
     initialDelaySeconds: 5
@@ -99,3 +101,4 @@ mongodb:
     timeoutSeconds: 5
     failureThreshold: 6
     successThreshold: 1
+  
