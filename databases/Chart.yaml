@@ -1,4 +1,4 @@
-apiVersion: v2
+apiVersion: elasticsearch.k8s.elastic.co/v1
 name: databases
 description: A Helm chart for Kubernetes
 
@@ -22,6 +22,14 @@ version: 0.1.0
 # follow Semantic Versioning. They should reflect the version the application is using.
 # It is recommended to use it with quotes.
 appVersion: "1.16.0"
+
+spec:
+  version: 7.17.3
+  nodeSets:
+    - name: default
+      count: 1
+      config:
+        node.store.allow_mmap: false
 
 dependencies:
   - name: elasticsearch

@@ -93,7 +93,7 @@ enabledECKOperator: true
 #    serviceMonitor:
 #      enabled: true
 
-###################### Agent Configuration Example #########################
+######################  #########################
 
 elasticsearch:
   replicas: 1
