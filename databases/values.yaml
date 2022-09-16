@@ -90,6 +90,10 @@ enableECKOperator: false
 enableMariaDB: false
 
 mongodb:
+  metrics:
+    enabled: true
+    serviceMonitor:
+      enabled: true
   architecture: replicaset
   replicaCount: 3
   auth:
