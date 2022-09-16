@@ -24,38 +24,8 @@ version: 0.1.0
 appVersion: "1.16.0"
 
 dependencies:
-  - name: eck-operator
-    version: "2.4.0"
+  - name: elasticsearch
+    version: "7.17.3"
     repository: https://helm.elastic.co
     condition: enabledECKOperator
-    config:
-      node.store.allow_mmap: false #recomendacion, no estoy seguro que hace, pero es importante
-    nodeSets:
-    - name: node-master
-      count: 1
-      config:
-        node.roles: ["master"]
-      volumeClaimTemplates:
-      - metadata:
-          name: elasticsearch-data
-        spec:
-          accessModes:
-          - ReadWriteOnce
-          resources:
-            requests:
-              storage: 2Gi #lo minimo para que arranque
-          storageClassName: standard
-    - name: data-nodes
-      count: 3
-      config:
-        node.roles: ["data"]
-      volumeClaimTemplates:
-      - metadata:
-          name: elasticsearch-data
-        spec:
-          accessModes:
-          - ReadWriteOnce
-          resources:
-            requests:
-              storage: 8Gi # 2gi * 3gi ( + 2gi por si le falta )
-          storageClassName: standard
+    
