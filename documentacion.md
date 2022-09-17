@@ -165,7 +165,54 @@ Para configurar los pods de MongoDB se utiliza la siguiente configuración:
 
 ### Configuración de Elasticsearch
 
-Elastisearch necesita
+La inplemetación de Elastisearch ha sufrido de varias complicaciones, y despues de varios intentos se siguienron las indicaciones de Gabriel Bauer de unop de sus blogs, para implemetar un servicio de elasticsearch y monitorearlo con Prometeus.
+
+Se implementa un nodo master con tres nodos de datos, original eran 3 master - 3 data distribuidos en 3 zonas de disponibilidad, modificado para solo usar una zona.
+
+Como primer paso, tanto en la guia de Bauer como en la pagina oficial de Elasticsearch, se necesitan instalar las definiciones de recursos personalizadas de Kubernetes, las reglas RBAC y un StatefulSet para el pod elastic-operator.
+
+```bash
+kubectl apply -f https://download.elastic.co/downloads/eck/1.2.1/all-in-one.yaml
+```
+
+A veces me funcionaba con el comando de arriba, pero tambien se puede utilizar el siguiente comando para descargar los recursos personalizados.
+
+```bash
+kubectl create -f https://download.elastic.co/downloads/eck/2.2.0/crds.yaml
+```
+
+Ambos comandos crean, en nuestro clúster de Kubernetes, las siguientes partes para operar Elasticsearch:
+
+- Todas las definiciones de recursos personalizadas necesarias
+- Todos los permisos RBAC que se necesitan
+- Un espacio de nombres para el operador (elastic-system)
+- Un StatefulSet para el Elastic Operator-Pod
+
+Tambien utiliza el siguiente comando para instalar el operador con sus reglas RBAC. Aunque hay que esperar un tiempo a que el primer comando termine de instarlo todo.
+
+```bash
+kubectl apply -f https://download.elastic.co/downloads/eck/2.2.0/operator.yaml
+```
+
+Una vez preparado el ambiente, simplemente se aplica el siguiente comando para instalar todos los pod de elastic, el de kibana, el monitor y crea los namespace donde todos los pods anteriores se van creando.
+
+```bash
+kubectl apply -f elasticsearch-tarea01.yaml
+```
+
+Para habilitar el monitoreo de prometeus primero se debe instalar un plugin en el clúster de Elasticsearch que exponga la información en el formato correcto bajo /_prometheus/metrics.
+
+```yaml
+# en el nodo master, le agrego lo siguiente
+- name: install-plugins
+         command:
+         - sh
+         - -c
+         - |
+          bin/elasticsearch-plugin install -b repository-s3 https://github.com/vvanholl/elasticsearch-prometheus-exporter/releases/download/7.7.0.0/prometheus-exporter-7.7.0.0.zip
+```
+
+Por ultimo creamos un ServiceMonitor porque estamos utilizando el operador Prometheus para monitorear las aplicaciones internas de Kubernetes. (Este se encuentra al final del archivo elasticsearch-tarea01.yaml).
 
 ### Configuración de PostgreSQL
 
@@ -206,7 +253,14 @@ Se debe especificar el tipo de datos que se están almacenando (dataset), tipo d
 
 ### Pruebas de carga para Elasticsearch
 
+No se logró instalar correctamente elasticsearch por lo que no pueden hacer pruebas de cargas.
+
 ### Pruebas de carga para PostgreSQL
 
 ## Conclusiones de la tarea corta
 
+El ultimo error que tubimos con Elasticsearch decia lo siguiente:
+
+```
+error: error validating "elasticsearch-tarea01.yaml": error validating data: [ValidationError(ServiceMonitor.spec): unknown field "accessModes" in com.coreos.monitoring.v1.ServiceMonitor.spec, ValidationError(ServiceMonitor.spec): unknown field "resources" in com.coreos.monitoring.v1.ServiceMonitor.spec]; if you choose to ignore these errors, turn validation off with --validate=false
+```
