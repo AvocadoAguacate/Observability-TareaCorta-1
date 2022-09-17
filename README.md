@@ -1,3 +1,4 @@
+
 # Observability-TareaCorta-1
 
     Tecnológico de Costa Rica
@@ -10,7 +11,7 @@
     David Jose Espinoza Soto - 2016012024
     Esteban Guzmán Ramírez   - 2015095861
     Johnny Díaz Coto         - 2020042119
-    Jurgenn
+    Jurgenn Morales Jiménez  - 2016145484
 
 ## Objetivo General
 
@@ -25,7 +26,7 @@
 ## Datos generales
 
 - Vale un 7%, y lo aprendido se implementara en el proyecto.
-- Fecha de entrega: **09/09/2022 antes de las 11:30 pm**
+- Fecha de entrega: **16/09/2022 antes de las 11:30 pm**
 
 ## Descripción
 
