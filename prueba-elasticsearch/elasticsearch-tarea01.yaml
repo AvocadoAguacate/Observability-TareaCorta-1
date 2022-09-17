@@ -42,8 +42,6 @@ spec:
           - sh
           - -c
           - |
-            bin/elasticsearch-plugin install -b repository-s3
-          - |
             bin/elasticsearch-plugin install -b repository-s3 https://github.com/vvanholl/elasticsearch-prometheus-exporter/releases/download/7.7.0.0/prometheus-exporter-7.7.0.0.zip
         tolerations:
         - key: "es-node"
