@@ -165,11 +165,11 @@ Para configurar los pods de MongoDB se utiliza la siguiente configuración:
 
 ### Configuración de Elasticsearch
 
-La inplemetación de Elastisearch ha sufrido de varias complicaciones, y despues de varios intentos se siguienron las indicaciones de Gabriel Bauer de unop de sus blogs, para implemetar un servicio de elasticsearch y monitorearlo con Prometeus.
+La implementación de Elastisearch ha sufrido de varias complicaciones, y después de varios intentos se siguieron las indicaciones de Gabriel Bauer de uno de sus blogs, para implementar un servicio de elasticsearch y monitorearlo con Prometeus.
 
 Se implementa un nodo master con tres nodos de datos, original eran 3 master - 3 data distribuidos en 3 zonas de disponibilidad, modificado para solo usar una zona.
 
-Como primer paso, tanto en la guia de Bauer como en la pagina oficial de Elasticsearch, se necesitan instalar las definiciones de recursos personalizadas de Kubernetes, las reglas RBAC y un StatefulSet para el pod elastic-operator.
+Como primer paso, tanto en la guía de Bauer como en la página oficial de Elasticsearch, se necesitan instalar las definiciones de recursos personalizadas de Kubernetes, las reglas RBAC y un StatefulSet para el pod elastic-operator.
 
 ```bash
 kubectl apply -f https://download.elastic.co/downloads/eck/1.2.1/all-in-one.yaml
