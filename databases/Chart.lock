@@ -2,5 +2,14 @@ dependencies:
 - name: mariadb
   repository: https://charts.bitnami.com/bitnami
   version: 11.3.0
-digest: sha256:952881b51b546537fe5592c2c5d7b247f1151a59a399afa5066a216ab6d699ab
-generated: "2022-09-12T19:39:57.8897531-06:00"
+- name: postgresql
+  repository: https://charts.bitnami.com/bitnami
+  version: 11.8.1
+- name: mongodb
+  repository: https://charts.bitnami.com/bitnami
+  version: 13.1.2
+- name: pgadmin4
+  repository: https://helm.runix.net
+  version: 1.12.0
+digest: sha256:b8ceeba0723d436bd13f97797cf864a91056e649ad94e3d6ae1e9d3a915d3af8
+generated: "2022-09-08T12:00:57.0996168-06:00"

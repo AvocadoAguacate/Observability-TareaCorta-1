@@ -29,5 +29,18 @@ dependencies:
     version: "11.3.0"
     repository: https://charts.bitnami.com/bitnami
     condition: enableMariaDB
-    
 
+  - name: postgresql
+    repository: https://charts.bitnami.com/bitnami
+    version: "11.8.1"
+    condition: enablePostgreSQL
+
+  - name: mongodb
+    version: "13.1.2"
+    repository: https://charts.bitnami.com/bitnami
+    condition: enableMongoDB
+
+  - name: pgadmin4
+    version: "1.12.0"
+    repository: https://helm.runix.net
+    condition: enablePgAdmin
