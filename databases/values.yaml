@@ -86,7 +86,7 @@ affinity: {}
 enablePostgreSQL: true
 enableMongoDB: false
 enableECKOperator: false
-enableMariaDB: false
+enableMariaDB: true
 enablePgAdmin: true
 
 
@@ -107,11 +107,20 @@ postgresql:
       userPasswordKey: ""
       replicationPasswordKey: ""
 
-mariadb:  
-  metrics:
-    enabled: true
-    serviceMonitor:
-      enabled: true
+mariadb:
+    architecture: replication
+    metrics:
+        enabled: true
+        serviceMonitor:
+            enabled: true
+    auth:
+        database: sampleDB
+        rootPassword: rootPass
+        username: test
+        password: testPass
+        replicationPassword: replicaPass
+    secondary:
+        replicaCount: 2
 
 mongodb:
   metrics:
@@ -141,5 +150,3 @@ pgadmin4:
     #   value: "0.0.0.0"
     # - name: PGADMIN_LISTEN_PORT
     #   value: "8080"
-
-
