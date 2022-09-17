@@ -82,9 +82,64 @@ tolerations: []
 affinity: {}
 
 
-enableMariaDB: true 
-enablePrometheus: true 
-enableGrafana: true 
-enableECKOperator: true 
-#enableElasticsearch: false
+
+enablePostgreSQL: true
+enableMongoDB: false
+enableECKOperator: false
+enableMariaDB: false
+enablePgAdmin: true
+
+
+postgresql:  
+  metrics:
+    enabled: true
+    serviceMonitor:
+      enabled: true 
+  
+  auth:
+    postgresPassword: "rootroot"
+    username: "root"
+    password: "rootroot"
+    database: "sampleDB"
+    existingSecret: ""
+    secretKeys:
+      adminPasswordKey: ""
+      userPasswordKey: ""
+      replicationPasswordKey: ""
+
+mariadb:  
+  metrics:
+    enabled: true
+    serviceMonitor:
+      enabled: true
+
+mongodb:
+  metrics:
+    enabled: true
+    serviceMonitor:
+      enabled: true
+
+eck-operator:  
+  metrics:
+    enabled: true
+    serviceMonitor:
+      enabled: true
+
+pgadmin4:
+  env:
+  # can be email or nickname
+    email: admin@admin.com
+    password: SuperSecret
+
+    enhanced_cookie_protection: "False"
+
+    ## Add custom environment variables that will be injected to deployment
+    ## Ref: https://www.pgadmin.org/docs/pgadmin4/latest/container_deployment.html
+    ##
+    variables: []
+    # - name: PGADMIN_LISTEN_ADDRESS
+    #   value: "0.0.0.0"
+    # - name: PGADMIN_LISTEN_PORT
+    #   value: "8080"
+
 
