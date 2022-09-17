@@ -1,4 +1,5 @@
 #Obtenido de https://blog.searchhub.io/how-to-deploy-elasticsearch-in-kubernetes-using-the-cloud-on-k8s-elasticsearch-operator
+#codigo base de Gabriel Bauer, enero 05, 2021
 
 apiVersion: v1
 kind: Namespace
@@ -20,7 +21,7 @@ spec:
       node.master: true
       node.data: false
       node.ingest: false
-      node.attr.zone: eu-north-1a
+      node.attr.zone: zone-a
       cluster.routing.allocation.awareness.attributes: zone
     podTemplate:
       metadata:
@@ -42,6 +43,8 @@ spec:
           - -c
           - |
             bin/elasticsearch-plugin install -b repository-s3
+          - |
+            bin/elasticsearch-plugin install -b repository-s3 https://github.com/vvanholl/elasticsearch-prometheus-exporter/releases/download/7.7.0.0/prometheus-exporter-7.7.0.0.zip
         tolerations:
         - key: "es-node"
           operator: "Equal"
@@ -62,7 +65,7 @@ spec:
       node.master: false
       node.data: true
       node.ingest: true
-      node.attr.zone: eu-north-1a
+      node.attr.zone: zone-a
       cluster.routing.allocation.awareness.attributes: zone
     podTemplate:
       metadata:
@@ -104,7 +107,7 @@ spec:
       node.master: false
       node.data: true
       node.ingest: true
-      node.attr.zone: eu-north-1a
+      node.attr.zone: zone-a
       cluster.routing.allocation.awareness.attributes: zone
     podTemplate:
       metadata:
@@ -146,7 +149,7 @@ spec:
       node.master: false
       node.data: true
       node.ingest: true
-      node.attr.zone: eu-north-1a
+      node.attr.zone: zone-a
       cluster.routing.allocation.awareness.attributes: zone
     podTemplate:
       metadata:
@@ -198,3 +201,40 @@ spec:
     metadata:
       labels:
         component: kibana
+---
+
+apiVersion: monitoring.tarea01.com/v1
+kind: ServiceMonitor
+metadata:
+ labels:
+   app: prometheus
+   prometheus: kube-prometheus
+   chart: prometheus-operator-8.13.8
+   release: prometheus-operator
+ name: monitoring-tarea01
+ namespace: monitoring
+spec:
+ endpoints:
+   - interval: 30s
+     path: "/_prometheus/metrics"
+     port: https
+     scheme: https
+     tlsConfig:
+       insecureSkipVerify: true
+     basicAuth:
+       password:
+         name: basic-auth-es
+         key: rootroot
+       username:
+         name: basic-auth-es
+         key: root
+ namespaceSelector:
+   matchNames:
+   - tarea01-prueba
+ selector:
+   matchLabels:
+     common.k8s.elastic.co/type: elasticsearch
+     elasticsearch.k8s.elastic.co/cluster-name: elastic-tarea01
+
+# usar este dasboard para grafana elasticsearch:
+# https://grafana.com/grafana/dashboards/266-elasticsearch/
