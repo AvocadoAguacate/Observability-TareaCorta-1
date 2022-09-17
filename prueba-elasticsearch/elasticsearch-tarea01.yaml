@@ -185,6 +185,12 @@ spec:
                 cpu: "500m"
 ---
 
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: ui
+---
+
 apiVersion: kibana.k8s.elastic.co/v1
 kind: Kibana
 metadata:
@@ -205,22 +211,22 @@ spec:
 apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
- labels:
-   app: prometheus
-   prometheus: kube-prometheus
-   chart: prometheus-operator-8.13.8
-   release: prometheus-operator
- name: monitoring-tarea01
- namespace: monitoring
+  labels:
+    app: prometheus
+    prometheus: kube-prometheus
+    chart: prometheus-operator-8.13.8
+    release: prometheus-operator
+  name: monitoring-tarea01
+  namespace: monitoring
 spec:
   endpoints:
-   - interval: 30s
-     path: "/_prometheus/metrics"
-     port: https
-     scheme: https
-     tlsConfig:
+  - interval: 30s
+    path: "/_prometheus/metrics"
+    port: https
+    scheme: https
+    tlsConfig:
       insecureSkipVerify: true
-     basicAuth:
+    basicAuth:
       password:
         name: basic-auth-es
         key: rootroot
@@ -235,10 +241,10 @@ spec:
   resources:
     requests:
       storage: 2Gi
- selector:
-   matchLabels:
-     common.k8s.elastic.co/type: elasticsearch
-     elasticsearch.k8s.elastic.co/cluster-name: elastic-tarea01
+  selector:
+    matchLabels:
+      common.k8s.elastic.co/type: elasticsearch
+      elasticsearch.k8s.elastic.co/cluster-name: elastic-tarea01
 
 # usar este dasboard para grafana elasticsearch:
 # https://grafana.com/grafana/dashboards/266-elasticsearch/
