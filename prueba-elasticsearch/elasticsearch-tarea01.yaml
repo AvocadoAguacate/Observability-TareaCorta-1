@@ -54,10 +54,10 @@ spec:
         - name: elasticsearch
           resources:
               requests:
-                memory: 2Gi
+                memory: 1.3Gi
                 cpu: "250m"
               limits:
-                memory: 2Gi 
+                memory: 1.5Gi 
                 cpu: "500m"    
   - name: data-zone-a
     count: 1
@@ -96,10 +96,10 @@ spec:
         - name: elasticsearch
           resources:
               requests:
-                memory: 2Gi
+                memory: 1.3Gi
                 cpu: "250m"
               limits:
-                memory: 2Gi 
+                memory: 1.5Gi 
                 cpu: "500m"
   - name: data-zone-b
     count: 1
@@ -138,10 +138,10 @@ spec:
         - name: elasticsearch
           resources:
               requests:
-                memory: 2Gi
+                memory: 1.3Gi
                 cpu: "250m"
               limits:
-                memory: 2Gi 
+                memory: 1.5Gi 
                 cpu: "500m"
   - name: data-zone-c
     count: 1
@@ -180,10 +180,10 @@ spec:
         - name: elasticsearch
           resources:
               requests:
-                memory: 2Gi
+                memory: 1.3Gi
                 cpu: "250m"
               limits:
-                memory: 2Gi 
+                memory: 1.5Gi 
                 cpu: "500m"
 ---
 
