@@ -191,19 +191,20 @@ apiVersion: kibana.k8s.elastic.co/v1
 kind: Kibana
 metadata:
   name: ui
-  namespace: tarea01-prueba
+  namespace: ui
 spec:
   version: 7.7.0
   count: 1
   elasticsearchRef:
-    name: tarea01-prueba
+    name: ui
   podTemplate:
     metadata:
       labels:
         component: kibana
 ---
-
-apiVersion: monitoring.tarea01.com/v1
+# monitoring.coreos.com/v1 -> ServiceMonitor define la supervisión de un conjunto de servicios.
+#https://docs.openshift.com/container-platform/4.7/rest_api/monitoring_apis/servicemonitor-monitoring-coreos-com-v1.html
+apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
  labels:
@@ -214,23 +215,28 @@ metadata:
  name: monitoring-tarea01
  namespace: monitoring
 spec:
- endpoints:
+  endpoints:
    - interval: 30s
      path: "/_prometheus/metrics"
      port: https
      scheme: https
      tlsConfig:
-       insecureSkipVerify: true
+      insecureSkipVerify: true
      basicAuth:
-       password:
-         name: basic-auth-es
-         key: rootroot
-       username:
-         name: basic-auth-es
-         key: root
- namespaceSelector:
-   matchNames:
-   - tarea01-prueba
+      password:
+        name: basic-auth-es
+        key: rootroot
+      username:
+        name: basic-auth-es
+        key: root
+  namespaceSelector:
+    matchNames:
+    - tarea01-prueba
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 2Gi
  selector:
    matchLabels:
      common.k8s.elastic.co/type: elasticsearch
