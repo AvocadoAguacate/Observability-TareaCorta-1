@@ -31,30 +31,30 @@ spec:
         volumes:
           - name: elasticsearch-data
             emptyDir: {}
-        affinity:
-          nodeAffinity:
-            requiredDuringSchedulingIgnoredDuringExecution:
-              nodeSelectorTerms: 
-              - matchExpressions:
-                - key: kops.k8s.io/instancegroup
-                  operator: In
-                  values:
-                  - es-master
-                - key: failure-domain.beta.kubernetes.io/zone
-                  operator: In
-                  values:
-                  - eu-north-1a
-          podAntiAffinity:
-            preferredDuringSchedulingIgnoredDuringExecution:
-            - weight: 100
-              podAffinityTerm:
-                labelSelector:
-                  matchExpressions:
-                  - key: role
-                    operator: In
-                    values:
-                    - es-master
-                topologyKey: kubernetes.io/hostname
+#        affinity:
+#          nodeAffinity:
+#            requiredDuringSchedulingIgnoredDuringExecution:
+#              nodeSelectorTerms: 
+#              - matchExpressions:
+#                - key: kops.k8s.io/instancegroup
+#                  operator: In
+#                  values:
+#                  - es-master
+#                - key: failure-domain.beta.kubernetes.io/zone
+#                  operator: In
+#                  values:
+#                  - eu-north-1a
+#          podAntiAffinity:
+#            preferredDuringSchedulingIgnoredDuringExecution:
+#            - weight: 100
+#              podAffinityTerm:
+#                labelSelector:
+#                  matchExpressions:
+#                  - key: role
+#                    operator: In
+#                    values:
+#                    - es-master
+#                topologyKey: kubernetes.io/hostname
         initContainers:
         - name: sysctl
           securityContext:
@@ -90,19 +90,19 @@ spec:
         volumes:
           - name: elasticsearch-data
             emptyDir: {}
-        affinity:
-          nodeAffinity:
-            requiredDuringSchedulingIgnoredDuringExecution:
-              nodeSelectorTerms:
-              - matchExpressions:
-                - key: kops.k8s.io/instancegroup
-                  operator: In
-                  values:
-                  - es-master
-                - key: failure-domain.beta.kubernetes.io/zone
-                  operator: In
-                  values:
-                  - eu-north-1b
+#        affinity:
+#          nodeAffinity:
+#            requiredDuringSchedulingIgnoredDuringExecution:
+#              nodeSelectorTerms:
+#              - matchExpressions:
+#                - key: kops.k8s.io/instancegroup
+#                  operator: In
+#                  values:
+#                  - es-master
+#                - key: failure-domain.beta.kubernetes.io/zone
+#                  operator: In
+#                  values:
+#                  - eu-north-1b
         initContainers:
         - name: sysctl
           securityContext:
@@ -138,19 +138,19 @@ spec:
         volumes:
           - name: elasticsearch-data
             emptyDir: {}
-        affinity:
-          nodeAffinity:
-            requiredDuringSchedulingIgnoredDuringExecution:
-              nodeSelectorTerms:
-              - matchExpressions:
-                - key: kops.k8s.io/instancegroup
-                  operator: In
-                  values:
-                  - es-master
-                - key: failure-domain.beta.kubernetes.io/zone
-                  operator: In
-                  values:
-                  - eu-north-1c
+#        affinity:
+#          nodeAffinity:
+#            requiredDuringSchedulingIgnoredDuringExecution:
+#              nodeSelectorTerms:
+#              - matchExpressions:
+#                - key: kops.k8s.io/instancegroup
+#                  operator: In
+#                  values:
+#                  - es-master
+#                - key: failure-domain.beta.kubernetes.io/zone
+#                  operator: In
+#                  values:
+#                  - eu-north-1c
         initContainers:
         - name: sysctl
           securityContext:
@@ -186,19 +186,19 @@ spec:
         volumes:
           - name: elasticsearch-data
             emptyDir: {}
-        affinity:
-          nodeAffinity:
-            requiredDuringSchedulingIgnoredDuringExecution:
-              nodeSelectorTerms:
-              - matchExpressions:
-                - key: kops.k8s.io/instancegroup
-                  operator: In
-                  values:
-                  - es-data
-                - key: failure-domain.beta.kubernetes.io/zone
-                  operator: In
-                  values:
-                  - eu-north-1a
+#        affinity:
+#          nodeAffinity:
+#            requiredDuringSchedulingIgnoredDuringExecution:
+#              nodeSelectorTerms:
+#              - matchExpressions:
+#                - key: kops.k8s.io/instancegroup
+#                  operator: In
+#                  values:
+#                  - es-data
+#                - key: failure-domain.beta.kubernetes.io/zone
+#                  operator: In
+#                  values:
+#                  - eu-north-1a
         initContainers:
         - name: sysctl
           securityContext:
@@ -234,19 +234,19 @@ spec:
         volumes:
           - name: elasticsearch-data
             emptyDir: {}
-        affinity:
-          nodeAffinity:
-            requiredDuringSchedulingIgnoredDuringExecution:
-              nodeSelectorTerms:
-              - matchExpressions:
-                - key: kops.k8s.io/instancegroup
-                  operator: In
-                  values:
-                  - es-data
-                - key: failure-domain.beta.kubernetes.io/zone
-                  operator: In
-                  values:
-                  - eu-north-1b
+#        affinity:
+#          nodeAffinity:
+#            requiredDuringSchedulingIgnoredDuringExecution:
+#              nodeSelectorTerms:
+#              - matchExpressions:
+#                - key: kops.k8s.io/instancegroup
+#                  operator: In
+#                  values:
+#                  - es-data
+#                - key: failure-domain.beta.kubernetes.io/zone
+#                  operator: In
+#                  values:
+#                  - eu-north-1b
         initContainers:
         - name: sysctl
           securityContext:
@@ -282,19 +282,19 @@ spec:
         volumes:
           - name: elasticsearch-data
             emptyDir: {}
-        affinity:
-          nodeAffinity:
-            requiredDuringSchedulingIgnoredDuringExecution:
-              nodeSelectorTerms:
-              - matchExpressions:
-                - key: kops.k8s.io/instancegroup
-                  operator: In
-                  values:
-                  - es-data
-                - key: failure-domain.beta.kubernetes.io/zone
-                  operator: In
-                  values:
-                  - eu-north-1c
+#        affinity:
+#          nodeAffinity:
+#            requiredDuringSchedulingIgnoredDuringExecution:
+#              nodeSelectorTerms:
+#              - matchExpressions:
+#                - key: kops.k8s.io/instancegroup
+#                  operator: In
+#                  values:
+#                  - es-data
+#                - key: failure-domain.beta.kubernetes.io/zone
+#                  operator: In
+#                  values:
+#                  - eu-north-1c
         initContainers:
         - name: sysctl
           securityContext:
@@ -319,12 +319,12 @@ apiVersion: kibana.k8s.elastic.co/v1
 kind: Kibana
 metadata:
   name: ui
-  namespace: ui
+  namespace: tarea01-prueba
 spec:
   version: 7.7.0
   count: 1
   elasticsearchRef:
-    name: ui
+    name: tarea01-prueba
   podTemplate:
     metadata:
       labels:
