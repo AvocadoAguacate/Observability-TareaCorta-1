@@ -87,7 +87,9 @@ enablePostgreSQL: true
 enableMongoDB: false
 enableECKOperator: false
 enableMariaDB: true
-enablePgAdmin: true
+
+# Descomentar esta condicion para usar si desea usar pgAdmin
+#enablePgAdmin: true
 
 
 postgresql:  
@@ -129,22 +131,27 @@ eck-operator:
     serviceMonitor:
       enabled: true
 
-pgadmin4:
-  env:
-  # can be email or nickname
-    email: admin@admin.com
-    password: SuperSecret
 
-    enhanced_cookie_protection: "False"
+#-----------------------------------------------------------------------
+  #Configuracion del pgAdmin, descomentar para una configuración propia|
+  #---------------------------------------------------------------------
 
-    ## Add custom environment variables that will be injected to deployment
-    ## Ref: https://www.pgadmin.org/docs/pgadmin4/latest/container_deployment.html
-    ##
-    variables: []
-    # - name: PGADMIN_LISTEN_ADDRESS
-    #   value: "0.0.0.0"
-    # - name: PGADMIN_LISTEN_PORT
-    #   value: "8080"
+# pgadmin4:
+#   env:
+#   # can be email or nickname
+#     email: admin@admin.com
+#     password: SuperSecret
+
+#     enhanced_cookie_protection: "False"
+
+#     ## Add custom environment variables that will be injected to deployment
+#     ## Ref: https://www.pgadmin.org/docs/pgadmin4/latest/container_deployment.html
+#     ##
+#     variables: []
+#     # - name: PGADMIN_LISTEN_ADDRESS
+#     #   value: "0.0.0.0"
+#     # - name: PGADMIN_LISTEN_PORT
+#     #   value: "8080"
 mongodb:
   metrics:
     enabled: true

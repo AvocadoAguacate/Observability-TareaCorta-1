@@ -16,6 +16,8 @@
 
 En esta sección explicamos como instalamos y ejecutamos los componentes solicitados de la tarea.
 
+
+## Comenzando desde 0
 ### Primeros pasos
 
 Lo primero que se debe hacer es un helm chart llamado monitoring y otro llamado databases, para lograr esto tenemos que ejecutar un comando de 'helm create [nombre del chart]', en nuestro caso serian los siguientes comandos:
@@ -28,7 +30,7 @@ helm create monitoring
 ```
 ---
 #### Configuración del chart Monitoring
-Una vez creados ambos charts lo consiguiente sería agregarles sus dependencias a cada uno de ellos, en el chart `monitoring` vamos a agregar todo lo relacionado al monitoreo de las bases de datos, prometheus y grafana, para esto nos ubicamos en el archivo llamado chart.yaml ubicado dentro de la carpeta monitoring creada por el comando de helm, se agregara lo siguiente:
+El chart de monitoring es el encargado de contener las herramientas sobre la monitorizacion de las herramientas, es por eso que se debe agregar las siguientes dependencias al archivo Chart.yaml:
 
 ```yaml
 dependencies:
@@ -57,7 +59,7 @@ enablePrometheusCommunity: true
 
 Con esto ya el trabajo en el chart de monitoring estaría completo.
 
-#### Chart de Databases
+#### Configuración del Chart de Databases
 
 Este chart es el encargado de contener las bases de datos utilizadas, el trabajo en este chart es similar al anterior, dentro de la carpeta que se creó usando el comando de helm create databases, se encuentra un achivo llamado chart.yaml, en él se agrega lo siguiente:
 
@@ -102,12 +104,44 @@ Una vez completados estos pasos se debe realizar la actualizacion de las depende
   helm dependecy build
 ```
 
+### Instalación
+Una vez con todo configurado lo que se debe hacer es instalar todo con el comando:
+```bash
+helm install [name][chart]
+```
+Por lo que en nuestra tarea se realizaria de la siguiente manera:
+
+```bash
+helm install databases databases
+```
+
+```bash
+helm install monitoring monitoring
+```
+
+Ya con estos comandos y con la configuración completa, todo debería estar inicializandose, esto lo podriamos comprobar en la aplicación de *Lens* o con el comando:
+
+```bash
+kubectl get all
+```
+Para obtener un listado de pods, servicios, deployment, etc.
+
+## Charts existentes
+
+En nuestro caso con los charts ya creados solo se deben realizar los ultimos comandos de Helm:
+
+```bash
+helm dependency update
+helm install [name][chart]
+```
+
+
 ### API
 Nos movemos a la carpeta del api, en caso de estar en la carpeta raíz del proyecto usariamos el comando
   ```shell
   cd api
   ```
-Instalamos dependencias con 
+Instalamos dependencias con:
   ```shell
 npm install 
   ```
@@ -117,7 +151,7 @@ Para correr el servidor se usa el comando
   ```
 ## Configuración de las herramientas
 
-(haciendo énfasis en los valores utilizados para cada una)
+Haciendo énfasis en los valores utilizados para cada una.
 
 ### Configuración de MariaDB
 Se cambian los valores en el archivo values.yaml para solo prender la base de datos indicada:
@@ -247,17 +281,13 @@ postgresql:
 
 Se debe especificar el tipo de datos que se están almacenando (dataset), tipo de prueba (creación, borrado, actualización y búsqueda), parámetros utilizados (configuración de Gatling), resultados (apoyados por la información de monitoreo y gráficos obtenidos) y conclusiones de la prueba, se deben incluir al menos 5 pruebas por motor de búsqueda
 
-### Pruebas de carga para MariaDB
-
-### Pruebas de carga para MongoDB
-
-### Pruebas de carga para Elasticsearch
-
-No se logró instalar correctamente elasticsearch por lo que no pueden hacer pruebas de cargas.
-
-### Pruebas de carga para PostgreSQL
+## Pruebas de Carga
+Para esta sección no se logró realizar exitosamente las pruebas de carga por lo que no se puede afirmar nada.
 
 ## Conclusiones de la tarea corta
+
+La instalación de la mayoría de las bases de datos necesarias fueron instaladas exitosamente, se logró crear replicas de las bases de datos que corresponden, al momento de la configuración de la herrmienta ElasticSearch se logro implementar un solo nodo, las replicas no se lograron.
+Al momento de realizar pruebas de carga no se lograron con la herramienta de Gatling, sin embargo se logrón un API para hacer consultas en MongoDB.
 
 El ultimo error que tubimos con Elasticsearch decia lo siguiente:
 

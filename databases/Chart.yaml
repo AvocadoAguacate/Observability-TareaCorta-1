@@ -41,7 +41,12 @@ dependencies:
     repository: https://charts.bitnami.com/bitnami
     condition: enableMongoDB
 
-  - name: pgadmin4
-    version: "1.12.0"
-    repository: https://helm.runix.net
-    condition: enablePgAdmin
+
+  #--------------------------------------------------------------------
+  #pgAdmin es una herramienta para administrar postgres de una manera |
+  #mas visual, si se desea usar descomente la dependencia             |
+  #--------------------------------------------------------------------
+  # - name: pgadmin4
+  #   version: "1.12.0"
+  #   repository: https://helm.runix.net
+  #   condition: enablePgAdmin
