@@ -277,6 +277,23 @@ postgresql:
 
   ```
 
+## Configuracion de herramientas no automatizadas
+Las herramientas de monitoreo no estan automatizadas, es por eso que se debe seguir una serie de pasos:
+
+### Prometheus
+
+* Una vez con todo instalado y corriendo debemos usar el servicio de Prometheus, este corre en el puerto 9090 para verficar que todo funciona bien.
+* Si realizamos bien la configuracion de las metricas en los values.yaml de las bases de datos entonces dentro de Prometheus en la sección de Status > Target podemos ver que estan las bases de datos, eso quiere decir que esta recibiendo informacion de ellas.
+
+### Grafana
+Grafana si lleva un poco mas de configuracion:
+
+* Primero debemos ir al pod para hacer un forward a para que nos muestre la interfaz (en Lens es tan fimple como ir al pod y presionar el boton de forward).
+* Ya con eso listo nos pide un usuario y contraseña, el usuario es *admin* y la contraseña la podemos encontrar en la seccion de secrets y vamos secret de Grafana, nuevamente, esto es mas sencillo con la aplicacion de Lens
+* Introducimos las credenciales.
+* Una vez dentro debemos agregar una nueva fuente de datos, seleccionamos Prometheus y realizamos la configuracion, en la seccion del URL se escribe `http://[nombre del servicio]:9090` asi que en nuestro caso sería `http://monitoring-kube-prometheus-prometheus:9090`
+* Seleccionamos 'Save and Test' para guardar la configuracion
+* Una vez creada la fuente de informacion agregamos los dashboards, eso lo hacemos en Dashboard > New > Import, previamente debimos hacer buscado un dashboard de nuestro agrado y copiamos su ID para pegarlo en los datos de importacion, cargamos el dashboard y lo podemos ver en funcionamiento.
 ## Pruebas de carga realizadas
 
 Se debe especificar el tipo de datos que se están almacenando (dataset), tipo de prueba (creación, borrado, actualización y búsqueda), parámetros utilizados (configuración de Gatling), resultados (apoyados por la información de monitoreo y gráficos obtenidos) y conclusiones de la prueba, se deben incluir al menos 5 pruebas por motor de búsqueda
