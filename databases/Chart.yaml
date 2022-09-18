@@ -35,6 +35,7 @@ dependencies:
     version: "11.8.1"
     condition: enablePostgreSQL
 
+
   - name: mongodb
     version: "13.1.2"
     repository: https://charts.bitnami.com/bitnami

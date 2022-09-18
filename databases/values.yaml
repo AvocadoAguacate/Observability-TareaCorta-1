@@ -122,11 +122,6 @@ mariadb:
     secondary:
         replicaCount: 2
 
-mongodb:
-  metrics:
-    enabled: true
-    serviceMonitor:
-      enabled: true
 
 eck-operator:  
   metrics:
@@ -150,3 +145,20 @@ pgadmin4:
     #   value: "0.0.0.0"
     # - name: PGADMIN_LISTEN_PORT
     #   value: "8080"
+mongodb:
+  metrics:
+    enabled: true
+    serviceMonitor:
+      enabled: true
+  architecture: replicaset
+  replicaCount: 3
+  auth:
+    enabled: false
+  readinessProbe:
+    enabled: true
+    initialDelaySeconds: 5
+    periodSeconds: 10
+    timeoutSeconds: 5
+    failureThreshold: 6
+    successThreshold: 1
+  
